@@ -24,6 +24,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.setAddress(address);
         parkingLot.setName(name);
+        parkingLotRepository1.save(parkingLot);
 
         return parkingLot;
     }
@@ -34,9 +35,9 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
         Spot spot = new Spot();
         spot.setPricePerHour(pricePerHour);
-        if(numberOfWheels==2)
+        if(numberOfWheels<=2)
             spot.setSpotType(SpotType.TWO_WHEELER);
-        else if(numberOfWheels==3)
+        else if(numberOfWheels<=4)
             spot.setSpotType(SpotType.FOUR_WHEELER);
         else
             spot.setSpotType(SpotType.OTHERS);
